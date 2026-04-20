@@ -35,9 +35,10 @@ const initialForm: Omit<InventoryItem, "id"> = {
 };
 
 export default function InventoryPage() {
-  const { inventory, inventoryFilter, setInventoryFilter, addInventoryItem, consumeInventoryItem, reduceInventoryItem, addManualGroceryItem } =
+  const { inventory, inventoryFilter, setInventoryFilter, addInventoryItem, updateInventoryItem, consumeInventoryItem, reduceInventoryItem, addManualGroceryItem } =
     useAppState();
   const [form, setForm] = useState(initialForm);
+  const [editingItemId, setEditingItemId] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
     switch (inventoryFilter) {
@@ -54,7 +55,34 @@ export default function InventoryPage() {
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    addInventoryItem(form);
+    if (editingItemId) {
+      updateInventoryItem(editingItemId, form);
+      setEditingItemId(null);
+    } else {
+      addInventoryItem(form);
+    }
+    setForm(initialForm);
+  };
+
+  const startEditing = (item: InventoryItem) => {
+    setEditingItemId(item.id);
+    setForm({
+      name: item.name,
+      category: item.category,
+      quantity: item.quantity,
+      unit: item.unit,
+      expirationDate: item.expirationDate,
+      calories: item.calories,
+      protein: item.protein,
+      carbs: item.carbs,
+      fats: item.fats,
+      lowStockThreshold: item.lowStockThreshold,
+      source: item.source
+    });
+  };
+
+  const cancelEditing = () => {
+    setEditingItemId(null);
     setForm(initialForm);
   };
 
@@ -83,7 +111,14 @@ export default function InventoryPage() {
 
         <form onSubmit={onSubmit} className="grid gap-3 rounded-[28px] border border-[#E8EEE9] bg-[#FBFDFC] p-4 sm:grid-cols-2">
           <div className="sm:col-span-2">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-preserve.leaf">Aggiungi articolo manualmente</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-preserve.leaf">
+              {editingItemId ? "Aggiorna articolo" : "Aggiungi articolo manualmente"}
+            </p>
+            <p className="mt-2 text-sm leading-6 text-preserve.slate">
+              {editingItemId
+                ? "Modifica quantita', scadenza, nutrizione o origine dell'articolo selezionato e salva l'aggiornamento."
+                : "Inserisci un nuovo prodotto in modo manuale per mantenere il frigo e la dispensa sempre allineati."}
+            </p>
           </div>
           {[
             { label: "Nome", key: "name", type: "text" },
@@ -140,10 +175,21 @@ export default function InventoryPage() {
               ))}
             </select>
           </label>
-          <button className="sm:col-span-2 inline-flex items-center justify-center gap-2 rounded-2xl bg-preserve.ink px-4 py-3 text-sm font-medium text-white transition hover:bg-[#0f271f]">
-            <Plus className="h-4 w-4" />
-            Aggiungi all'inventario
-          </button>
+          <div className="sm:col-span-2 flex flex-wrap gap-3">
+            <button className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl bg-preserve.ink px-4 py-3 text-sm font-medium text-white transition hover:bg-[#0f271f]">
+              <Plus className="h-4 w-4" />
+              {editingItemId ? "Salva aggiornamenti" : "Aggiungi all'inventario"}
+            </button>
+            {editingItemId ? (
+              <button
+                type="button"
+                onClick={cancelEditing}
+                className="inline-flex items-center justify-center rounded-2xl border border-[#D8E5DC] px-4 py-3 text-sm font-medium text-preserve.ink transition hover:bg-white"
+              >
+                Annulla
+              </button>
+            ) : null}
+          </div>
         </form>
       </SurfaceCard>
 
@@ -188,6 +234,7 @@ export default function InventoryPage() {
               <InventoryRow
                 key={item.id}
                 item={item}
+                onEdit={() => startEditing(item)}
                 onConsume={() => consumeInventoryItem(item.id)}
                 onReduce={() => reduceInventoryItem(item.id)}
                 onQueue={() =>

@@ -39,6 +39,7 @@ type AppStateContextValue = {
   setRecipeFilter: (filter: RecipeTag | "all") => void;
   setInventoryFilter: (filter: InventoryFilter) => void;
   addInventoryItem: (payload: NewInventoryItem) => void;
+  updateInventoryItem: (id: string, payload: NewInventoryItem) => void;
   consumeInventoryItem: (id: string) => void;
   reduceInventoryItem: (id: string, amount?: number) => void;
   addMissingIngredientsToGrocery: (recipe: Recipe) => void;
@@ -125,6 +126,19 @@ export const AppStateProvider = ({ children }: { children: ReactNode }) => {
       },
       ...current
     ]);
+  };
+
+  const updateInventoryItem = (id: string, payload: NewInventoryItem) => {
+    setInventory((current) =>
+      current.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              ...payload
+            }
+          : item
+      )
+    );
   };
 
   const consumeInventoryItem = (id: string) => {
@@ -216,6 +230,7 @@ export const AppStateProvider = ({ children }: { children: ReactNode }) => {
       setRecipeFilter,
       setInventoryFilter,
       addInventoryItem,
+      updateInventoryItem,
       consumeInventoryItem,
       reduceInventoryItem,
       addMissingIngredientsToGrocery,

@@ -1,4 +1,4 @@
-import { Minus, ShoppingCart, Trash2 } from "lucide-react";
+import { Minus, Pencil, ShoppingCart, Trash2 } from "lucide-react";
 import { InventoryItem } from "@/lib/types";
 import { categoryLabel, daysUntil, formatShortDate, getInventoryStatus, inventoryStatusLabel, isLowStock, sourceLabel } from "@/lib/utils";
 
@@ -10,11 +10,13 @@ const badges = {
 
 export const InventoryRow = ({
   item,
+  onEdit,
   onConsume,
   onReduce,
   onQueue
 }: {
   item: InventoryItem;
+  onEdit: () => void;
   onConsume: () => void;
   onReduce: () => void;
   onQueue: () => void;
@@ -57,6 +59,13 @@ export const InventoryRow = ({
         <p>F {item.fats}g</p>
       </div>
       <div className="flex flex-wrap gap-2 lg:justify-end">
+        <button
+          onClick={onEdit}
+          className="inline-flex items-center gap-2 rounded-2xl border border-[#D8E5DC] px-3 py-2 text-sm font-medium text-preserve.ink transition hover:bg-[#F5FAF6]"
+        >
+          <Pencil className="h-4 w-4" />
+          Modifica
+        </button>
         <button
           onClick={onReduce}
           className="inline-flex items-center gap-2 rounded-2xl border border-[#D8E5DC] px-3 py-2 text-sm font-medium text-preserve.ink transition hover:bg-[#F5FAF6]"
