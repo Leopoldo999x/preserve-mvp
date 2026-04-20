@@ -29,20 +29,20 @@ export default function SettingsPage() {
           />
           <div className="mt-5 space-y-4">
             <div className="rounded-[24px] border border-[#E8EEE9] bg-[#FBFDFC] p-4">
-              <div className="flex items-center gap-2 text-sm font-medium text-preserve.ink">
-                <SlidersHorizontal className="h-4 w-4 text-preserve.leaf" />
+              <div className="flex items-center gap-2 text-sm font-medium text-preserve-ink">
+                <SlidersHorizontal className="h-4 w-4 text-preserve-leaf" />
                 Logica di raccomandazione
               </div>
-              <p className="mt-2 text-sm leading-6 text-preserve.slate">
+              <p className="mt-2 text-sm leading-6 text-preserve-slate">
                 Ordine delle ricette, promemoria spesa e messaggi in dashboard si adattano alla tua casa e ai tuoi obiettivi.
               </p>
             </div>
             <div className="rounded-[24px] border border-[#E8EEE9] bg-[#FBFDFC] p-4">
-              <div className="flex items-center gap-2 text-sm font-medium text-preserve.ink">
-                <BellRing className="h-4 w-4 text-preserve.leaf" />
+              <div className="flex items-center gap-2 text-sm font-medium text-preserve-ink">
+                <BellRing className="h-4 w-4 text-preserve-leaf" />
                 Modello notifiche
               </div>
-              <p className="mt-2 text-sm leading-6 text-preserve.slate">
+              <p className="mt-2 text-sm leading-6 text-preserve-slate">
                 Avvisi di scadenza e promemoria spesa possono essere regolati per studente, famiglia o profilo orientato al fitness.
               </p>
             </div>
@@ -51,10 +51,10 @@ export default function SettingsPage() {
 
         <div className="rounded-[28px] border border-[#E8EEE9] bg-[#FBFDFC] p-5">
           <div className="grid gap-4 md:grid-cols-2">
-            <label className="text-sm text-preserve.slate">
+            <label className="text-sm text-preserve-slate">
               Preferenza alimentare
               <select
-                className="mt-2 w-full rounded-2xl border border-[#D8E5DC] bg-white px-4 py-3 text-preserve.ink outline-none transition focus:border-preserve.leaf"
+                className="mt-2 w-full rounded-2xl border border-[#D8E5DC] bg-white px-4 py-3 text-preserve-ink outline-none transition focus:border-preserve-leaf"
                 value={draft.dietPreference}
                 onChange={(event) => setDraft((current) => ({ ...current, dietPreference: event.target.value as UserPreferences["dietPreference"] }))}
               >
@@ -66,10 +66,10 @@ export default function SettingsPage() {
               </select>
             </label>
 
-            <label className="text-sm text-preserve.slate">
+            <label className="text-sm text-preserve-slate">
               Obiettivo fitness
               <select
-                className="mt-2 w-full rounded-2xl border border-[#D8E5DC] bg-white px-4 py-3 text-preserve.ink outline-none transition focus:border-preserve.leaf"
+                className="mt-2 w-full rounded-2xl border border-[#D8E5DC] bg-white px-4 py-3 text-preserve-ink outline-none transition focus:border-preserve-leaf"
                 value={draft.fitnessGoal}
                 onChange={(event) => setDraft((current) => ({ ...current, fitnessGoal: event.target.value as UserPreferences["fitnessGoal"] }))}
               >
@@ -81,10 +81,10 @@ export default function SettingsPage() {
               </select>
             </label>
 
-            <label className="text-sm text-preserve.slate md:col-span-2">
+            <label className="text-sm text-preserve-slate md:col-span-2">
               Nucleo domestico
               <select
-                className="mt-2 w-full rounded-2xl border border-[#D8E5DC] bg-white px-4 py-3 text-preserve.ink outline-none transition focus:border-preserve.leaf"
+                className="mt-2 w-full rounded-2xl border border-[#D8E5DC] bg-white px-4 py-3 text-preserve-ink outline-none transition focus:border-preserve-leaf"
                 value={draft.householdType}
                 onChange={(event) => setDraft((current) => ({ ...current, householdType: event.target.value as UserPreferences["householdType"] }))}
               >
@@ -105,7 +105,7 @@ export default function SettingsPage() {
               { key: "expiryAlerts", label: "Avvisi di scadenza" }
             ].map((item) => (
               <label key={item.key} className="flex items-center justify-between gap-4 rounded-[24px] border border-[#E8EEE9] bg-white px-4 py-4">
-                <span className="text-sm font-medium text-preserve.ink">{item.label}</span>
+                <span className="text-sm font-medium text-preserve-ink">{item.label}</span>
                 <input
                   type="checkbox"
                   checked={draft.notifications[item.key as keyof UserPreferences["notifications"]]}
@@ -126,7 +126,7 @@ export default function SettingsPage() {
 
           <button
             onClick={() => updatePreferences(draft)}
-            className="mt-5 w-full rounded-2xl bg-preserve.ink px-4 py-3 text-sm font-medium text-white transition hover:bg-[#0f271f]"
+            className="mt-5 w-full rounded-2xl bg-preserve-ink px-4 py-3 text-sm font-medium text-white transition hover:bg-[#0f271f]"
           >
             Salva impostazioni
           </button>

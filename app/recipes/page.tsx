@@ -33,7 +33,7 @@ export default function RecipesPage() {
                   key={tag.key}
                   onClick={() => setRecipeFilter(tag.key)}
                   className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                    recipeFilter === tag.key ? "bg-preserve.ink text-white" : "bg-white text-preserve.slate shadow-sm hover:bg-[#F3F7F2]"
+                    recipeFilter === tag.key ? "bg-preserve-ink text-white" : "bg-white text-preserve-slate shadow-sm hover:bg-[#F3F7F2]"
                   }`}
                 >
                   {tag.label}
@@ -51,7 +51,7 @@ export default function RecipesPage() {
           action={
             <button
               onClick={() => setRecipeFilter("all")}
-              className="rounded-2xl bg-preserve.ink px-4 py-3 text-sm font-medium text-white transition hover:bg-[#0f271f]"
+              className="rounded-2xl bg-preserve-ink px-4 py-3 text-sm font-medium text-white transition hover:bg-[#0f271f]"
             >
               Mostra tutte le ricette
             </button>

@@ -16,7 +16,7 @@ export default function DashboardPage() {
   return (
     <div className="space-y-6 pb-8">
       <section className="grid gap-4 xl:grid-cols-[1.4fr_0.8fr]">
-        <SurfaceCard className="overflow-hidden bg-gradient-to-br from-preserve.ink via-[#194b3b] to-preserve.leaf p-0 text-white">
+        <SurfaceCard className="overflow-hidden bg-gradient-to-br from-preserve-ink via-[#194b3b] to-preserve-leaf p-0 text-white">
           <div className="grid gap-6 p-6 lg:grid-cols-[1.2fr_0.8fr]">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/70">Motore intelligente Preserve</p>
@@ -27,7 +27,7 @@ export default function DashboardPage() {
                 Preserve unisce controllo delle scadenze, suggerimenti di ricette, lista della spesa e guida nutrizionale in un flusso semplice e moderno.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <button className="rounded-2xl bg-white px-5 py-3 text-sm font-medium text-preserve.ink transition hover:bg-[#f3f6f4]">
+                <button className="rounded-2xl bg-white px-5 py-3 text-sm font-medium text-preserve-ink transition hover:bg-[#f3f6f4]">
                   Avvia scansione smart
                 </button>
                 <button className="rounded-2xl border border-white/18 bg-white/10 px-5 py-3 text-sm font-medium text-white transition hover:bg-white/16">
@@ -91,12 +91,12 @@ export default function DashboardPage() {
               <div key={recipe.id} className="rounded-[24px] border border-[#E8EEE9] bg-[#FBFDFC] p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <p className="font-medium text-preserve.ink">{recipe.title}</p>
-                    <p className="mt-1 text-sm text-preserve.slate">
+                    <p className="font-medium text-preserve-ink">{recipe.title}</p>
+                    <p className="mt-1 text-sm text-preserve-slate">
                       {recipe.match.matched.length}/{recipe.ingredients.length} ingredienti gia' disponibili
                     </p>
                   </div>
-                  <span className="rounded-full bg-preserve.mint px-3 py-1 text-xs font-semibold text-preserve.leaf">
+                  <span className="rounded-full bg-preserve-mint px-3 py-1 text-xs font-semibold text-preserve-leaf">
                     Compatibilita {(recipe.match.ratio * 100).toFixed(0)}%
                   </span>
                 </div>
@@ -116,7 +116,7 @@ export default function DashboardPage() {
             action={
               <button
                 onClick={addLowStockItemsToGrocery}
-                className="rounded-2xl bg-preserve.ink px-4 py-3 text-sm font-medium text-white transition hover:bg-[#0f271f]"
+                className="rounded-2xl bg-preserve-ink px-4 py-3 text-sm font-medium text-white transition hover:bg-[#0f271f]"
               >
                 Aggiungi scorte basse
               </button>
@@ -124,20 +124,20 @@ export default function DashboardPage() {
           />
           <div className="mt-5 space-y-4">
             <div className="rounded-[24px] border border-[#E8EEE9] p-4">
-              <div className="flex items-center gap-2 text-sm font-medium text-preserve.ink">
-                <ShoppingCart className="h-4 w-4 text-preserve.leaf" />
+              <div className="flex items-center gap-2 text-sm font-medium text-preserve-ink">
+                <ShoppingCart className="h-4 w-4 text-preserve-leaf" />
                 Automazione spesa
               </div>
-              <p className="mt-2 text-sm leading-6 text-preserve.slate">
+              <p className="mt-2 text-sm leading-6 text-preserve-slate">
                 Ingredienti mancanti, scorte basse e abitudini domestiche confluiscono in un'unica lista della spesa.
               </p>
             </div>
             <div className="rounded-[24px] border border-dashed border-[#D8E5DC] bg-[#F9FBF8] p-4">
-              <div className="flex items-center gap-2 text-sm font-medium text-preserve.ink">
-                <ShieldCheck className="h-4 w-4 text-preserve.amber" />
+              <div className="flex items-center gap-2 text-sm font-medium text-preserve-ink">
+                <ShieldCheck className="h-4 w-4 text-preserve-amber" />
                 Concept futuro: frigorifero smart
               </div>
-              <p className="mt-2 text-sm leading-6 text-preserve.slate">
+              <p className="mt-2 text-sm leading-6 text-preserve-slate">
                 Rilevamento sugli scaffali, integrazione con retailer e riordino predittivo sono gia' pronti come prossima evoluzione del prodotto.
               </p>
             </div>
@@ -145,7 +145,7 @@ export default function DashboardPage() {
         </SurfaceCard>
         <SurfaceCard className="bg-gradient-to-br from-[#FFF7EA] via-white to-[#FFF1EA]">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#A85F00]">Anteprima onboarding</p>
-          <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight text-preserve.ink">Preserve diventa utile in meno di 60 secondi</h3>
+          <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight text-preserve-ink">Preserve diventa utile in meno di 60 secondi</h3>
           <div className="mt-5 space-y-3">
             {[
               "Collega obiettivi e tipologia di nucleo domestico",
@@ -154,12 +154,12 @@ export default function DashboardPage() {
               "Genera automaticamente la prossima lista della spesa"
             ].map((step, index) => (
               <div key={step} className="flex items-start gap-3 rounded-2xl bg-white/80 p-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-preserve.ink text-sm font-medium text-white">{index + 1}</div>
-                <p className="text-sm leading-6 text-preserve.slate">{step}</p>
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-preserve-ink text-sm font-medium text-white">{index + 1}</div>
+                <p className="text-sm leading-6 text-preserve-slate">{step}</p>
               </div>
             ))}
           </div>
-          <button className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-preserve.ink">
+          <button className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-preserve-ink">
             Scopri l'intero percorso di onboarding
             <ArrowRight className="h-4 w-4" />
           </button>

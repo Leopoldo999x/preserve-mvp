@@ -97,24 +97,24 @@ export default function InventoryPage() {
           />
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
             <button className="rounded-[24px] border border-[#D8E5DC] bg-[#F9FBF8] p-4 text-left transition hover:bg-white">
-              <Camera className="h-5 w-5 text-preserve.leaf" />
-              <p className="mt-3 font-medium text-preserve.ink">Simula scansione fotocamera</p>
-              <p className="mt-1 text-sm leading-6 text-preserve.slate">Riconosci etichette e date di scadenza con un flusso visivo rapido e intuitivo.</p>
+              <Camera className="h-5 w-5 text-preserve-leaf" />
+              <p className="mt-3 font-medium text-preserve-ink">Simula scansione fotocamera</p>
+              <p className="mt-1 text-sm leading-6 text-preserve-slate">Riconosci etichette e date di scadenza con un flusso visivo rapido e intuitivo.</p>
             </button>
             <button className="rounded-[24px] border border-[#D8E5DC] bg-[#FFF7EA] p-4 text-left transition hover:bg-white">
               <Mic className="h-5 w-5 text-[#A85F00]" />
-              <p className="mt-3 font-medium text-preserve.ink">Simula input vocale</p>
-              <p className="mt-1 text-sm leading-6 text-preserve.slate">"Aggiungi due avocado e latte di mandorla" diventa inventario strutturato in pochi secondi.</p>
+              <p className="mt-3 font-medium text-preserve-ink">Simula input vocale</p>
+              <p className="mt-1 text-sm leading-6 text-preserve-slate">"Aggiungi due avocado e latte di mandorla" diventa inventario strutturato in pochi secondi.</p>
             </button>
           </div>
         </div>
 
         <form onSubmit={onSubmit} className="grid gap-3 rounded-[28px] border border-[#E8EEE9] bg-[#FBFDFC] p-4 sm:grid-cols-2">
           <div className="sm:col-span-2">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-preserve.leaf">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-preserve-leaf">
               {editingItemId ? "Aggiorna articolo" : "Aggiungi articolo manualmente"}
             </p>
-            <p className="mt-2 text-sm leading-6 text-preserve.slate">
+            <p className="mt-2 text-sm leading-6 text-preserve-slate">
               {editingItemId
                 ? "Modifica quantita', scadenza, nutrizione o origine dell'articolo selezionato e salva l'aggiornamento."
                 : "Inserisci un nuovo prodotto in modo manuale per mantenere il frigo e la dispensa sempre allineati."}
@@ -131,11 +131,11 @@ export default function InventoryPage() {
             { label: "Grassi", key: "fats", type: "number" },
             { label: "Soglia scorte basse", key: "lowStockThreshold", type: "number" }
           ].map((field) => (
-            <label key={field.key} className="text-sm text-preserve.slate">
+            <label key={field.key} className="text-sm text-preserve-slate">
               {field.label}
               <input
                 required={field.key === "name"}
-                className="mt-2 w-full rounded-2xl border border-[#D8E5DC] bg-white px-4 py-3 text-preserve.ink outline-none transition focus:border-preserve.leaf"
+                className="mt-2 w-full rounded-2xl border border-[#D8E5DC] bg-white px-4 py-3 text-preserve-ink outline-none transition focus:border-preserve-leaf"
                 type={field.type}
                 value={String(form[field.key as keyof typeof form])}
                 onChange={(event) =>
@@ -147,10 +147,10 @@ export default function InventoryPage() {
               />
             </label>
           ))}
-          <label className="text-sm text-preserve.slate">
+          <label className="text-sm text-preserve-slate">
             Categoria
             <select
-              className="mt-2 w-full rounded-2xl border border-[#D8E5DC] bg-white px-4 py-3 text-preserve.ink outline-none transition focus:border-preserve.leaf"
+              className="mt-2 w-full rounded-2xl border border-[#D8E5DC] bg-white px-4 py-3 text-preserve-ink outline-none transition focus:border-preserve-leaf"
               value={form.category}
               onChange={(event) => setForm((current) => ({ ...current, category: event.target.value as InventoryItem["category"] }))}
             >
@@ -161,10 +161,10 @@ export default function InventoryPage() {
               ))}
             </select>
           </label>
-          <label className="text-sm text-preserve.slate">
+          <label className="text-sm text-preserve-slate">
             Origine
             <select
-              className="mt-2 w-full rounded-2xl border border-[#D8E5DC] bg-white px-4 py-3 text-preserve.ink outline-none transition focus:border-preserve.leaf"
+              className="mt-2 w-full rounded-2xl border border-[#D8E5DC] bg-white px-4 py-3 text-preserve-ink outline-none transition focus:border-preserve-leaf"
               value={form.source}
               onChange={(event) => setForm((current) => ({ ...current, source: event.target.value as InventoryItem["source"] }))}
             >
@@ -176,7 +176,7 @@ export default function InventoryPage() {
             </select>
           </label>
           <div className="sm:col-span-2 flex flex-wrap gap-3">
-            <button className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl bg-preserve.ink px-4 py-3 text-sm font-medium text-white transition hover:bg-[#0f271f]">
+            <button className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl bg-preserve-ink px-4 py-3 text-sm font-medium text-white transition hover:bg-[#0f271f]">
               <Plus className="h-4 w-4" />
               {editingItemId ? "Salva aggiornamenti" : "Aggiungi all'inventario"}
             </button>
@@ -184,7 +184,7 @@ export default function InventoryPage() {
               <button
                 type="button"
                 onClick={cancelEditing}
-                className="inline-flex items-center justify-center rounded-2xl border border-[#D8E5DC] px-4 py-3 text-sm font-medium text-preserve.ink transition hover:bg-white"
+                className="inline-flex items-center justify-center rounded-2xl border border-[#D8E5DC] px-4 py-3 text-sm font-medium text-preserve-ink transition hover:bg-white"
               >
                 Annulla
               </button>
@@ -205,7 +205,7 @@ export default function InventoryPage() {
                   key={filter.key}
                   onClick={() => setInventoryFilter(filter.key)}
                   className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                    inventoryFilter === filter.key ? "bg-preserve.ink text-white" : "bg-[#F3F7F2] text-preserve.slate hover:bg-white"
+                    inventoryFilter === filter.key ? "bg-preserve-ink text-white" : "bg-[#F3F7F2] text-preserve-slate hover:bg-white"
                   }`}
                 >
                   {filter.label}
@@ -223,7 +223,7 @@ export default function InventoryPage() {
               action={
                 <button
                   onClick={() => setInventoryFilter("all")}
-                  className="rounded-2xl bg-preserve.ink px-4 py-3 text-sm font-medium text-white transition hover:bg-[#0f271f]"
+                  className="rounded-2xl bg-preserve-ink px-4 py-3 text-sm font-medium text-white transition hover:bg-[#0f271f]"
                 >
                   Reimposta filtro
                 </button>
@@ -252,11 +252,11 @@ export default function InventoryPage() {
         </div>
 
         <div className="mt-5 rounded-[24px] border border-dashed border-[#D8E5DC] bg-[#F9FBF8] p-4">
-          <div className="flex items-center gap-2 text-sm font-medium text-preserve.ink">
-            <Sparkles className="h-4 w-4 text-preserve.leaf" />
+          <div className="flex items-center gap-2 text-sm font-medium text-preserve-ink">
+            <Sparkles className="h-4 w-4 text-preserve-leaf" />
             Roadmap scaffale smart
           </div>
-          <p className="mt-2 text-sm leading-6 text-preserve.slate">
+          <p className="mt-2 text-sm leading-6 text-preserve-slate">
             Le prossime iterazioni potranno rilevare la posizione nel frigo, importare scontrini e suggerire automaticamente le scadenze in base allo storico.
           </p>
         </div>

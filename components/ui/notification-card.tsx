@@ -15,12 +15,12 @@ const appearance = {
   },
   "low-stock": {
     icon: BellRing,
-    accent: "text-preserve.leaf",
-    bg: "bg-preserve.mint"
+    accent: "text-preserve-leaf",
+    bg: "bg-preserve-mint"
   },
   reminder: {
     icon: BellRing,
-    accent: "text-preserve.ink",
+    accent: "text-preserve-ink",
     bg: "bg-[#EDF5FF]"
   }
 };
@@ -35,8 +35,8 @@ export const NotificationCard = ({ notification }: { notification: NotificationI
         <Icon className="h-5 w-5" />
       </div>
       <div>
-        <p className="font-medium text-preserve.ink">{notification.title}</p>
-        <p className="mt-1 text-sm leading-6 text-preserve.slate">{notification.description}</p>
+        <p className="font-medium text-preserve-ink">{notification.title}</p>
+        <p className="mt-1 text-sm leading-6 text-preserve-slate">{notification.description}</p>
       </div>
     </SurfaceCard>
   );
